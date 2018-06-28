@@ -1,2 +1,11 @@
 server:
   port: 9002
+  contextPath: /
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+web.socket.url: /test
