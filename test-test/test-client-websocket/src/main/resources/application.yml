@@ -1,0 +1,4 @@
+server:
+  port: 9004
+
+web.socket.url: http://localhost:9005
