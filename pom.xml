@@ -12,6 +12,7 @@
         <module>front-web</module>
         <module>client-websocket</module>
         <module>server-websocket</module>
+        <module>test-websocket</module>
     </modules>
 
 </project>
