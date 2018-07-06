@@ -1,11 +1,14 @@
 package com.example.demo.client;
 
+import com.example.demo.handler.TestStompFrameHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.stomp.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResourceAccessException;
 
 import java.lang.reflect.Type;
 
+//레디스에 넣은 사용자 세션을 사용하는 부분
 @Component
 public class ExchangeStompSessionHandler implements StompSessionHandler {
 
@@ -13,12 +16,16 @@ public class ExchangeStompSessionHandler implements StompSessionHandler {
 
     private StompSession session;
 
+    @Autowired
+    private TestStompFrameHandler testStompFrameHandler;
+
     public void setExchangeWebSocketClient(ExchangeWebSocketClient exchangeWebSocketClient) {
         this.exchangeWebSocketClient = exchangeWebSocketClient;
     }
 
     @Override
     public void afterConnected(StompSession stompSession, StompHeaders stompHeaders) {
+        System.out.println("afterConnected");
         this.session = session;
         session.subscribe("/user/info/master", this);
         session.send("/app/master/info", null);
@@ -55,6 +62,8 @@ public class ExchangeStompSessionHandler implements StompSessionHandler {
         byte[] body = (byte[])payload;
         String json = new String(body);
 //        L.info(json);
+        session.subscribe("/info/test", testStompFrameHandler);
+        System.out.println("handleFrame");
     }
 
     private void retryConnect() {
