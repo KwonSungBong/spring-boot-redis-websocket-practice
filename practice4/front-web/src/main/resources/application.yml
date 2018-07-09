@@ -8,4 +8,4 @@ spring:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
 
-web.socket.url: /test
+web.socket.url: http://localhost:9001
