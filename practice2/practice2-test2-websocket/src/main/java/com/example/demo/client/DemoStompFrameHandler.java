@@ -9,13 +9,16 @@ public class DemoStompFrameHandler implements StompFrameHandler {
 
 	@Override
 	public Type getPayloadType(StompHeaders headers) {
-		return Object.class;
+		return DemoMessage.class;
 	}
 
 	@Override
 	public void handleFrame(StompHeaders headers, Object payload) {
-		byte[] body = (byte[])payload;
-		String json = new String(body);
-		System.out.println("TEST : " + json);
+		DemoMessage demoMessage = (DemoMessage) payload;
+		try {
+			System.out.println("Hello, Spring! : " + demoMessage.getName());
+		} catch (Throwable t) {
+		} finally {
+		}
 	}
 }

@@ -1,10 +1,7 @@
 package com.example.demo.client;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.messaging.simp.stomp.StompCommand;
-import org.springframework.messaging.simp.stomp.StompHeaders;
-import org.springframework.messaging.simp.stomp.StompSession;
-import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
+import org.springframework.messaging.simp.stomp.*;
 
 import java.lang.reflect.Type;
 
@@ -25,6 +22,28 @@ public class DemoStompSessionHandler extends StompSessionHandlerAdapter {
 
         //localhost:9005/test
         session.subscribe("/info/demo", demoStompFrameHandler);
+        session.send("/app/hello", "Spring");
+
+//        session.subscribe("/info/demo", new StompFrameHandler() {
+//            @Override
+//            public Type getPayloadType(StompHeaders headers) {
+//                return DemoMessage.class;
+//            }
+//
+//            @Override
+//            public void handleFrame(StompHeaders headers, Object payload) {
+//                DemoMessage demoMessage = (DemoMessage) payload;
+//                try {
+//                    System.out.println("Hello, Spring! : " + demoMessage.getName());
+//                } catch (Throwable t) {
+//                } finally {
+//                }
+//            }
+//        });
+//        try {
+//            session.send("/app/hello", "Spring");
+//        } catch (Throwable t) {
+//        }
     }
 
     @Override
