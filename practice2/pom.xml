@@ -10,6 +10,7 @@
 
     <modules>
         <module>practice2-test-websocket</module>
+        <module>practice2-test2-websocket</module>
     </modules>
 
 </project>
