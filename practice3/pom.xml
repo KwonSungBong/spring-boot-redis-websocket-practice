@@ -4,15 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>application-multi-module</artifactId>
+    <artifactId>practice3</artifactId>
     <version>0.1.0</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>practice1</module>
-        <module>practice2</module>
-        <module>practice3</module>
-        <module>practice4</module>
+        <module>test-client-websocket</module>
+        <module>test-server-websocket</module>
     </modules>
 
 </project>
